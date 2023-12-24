@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'abhishekf5/maven-abhishek-docker-agent:v1'
-      docker run -v \\.\pipe\docker_engine:\\.\pipe\docker_engine -e COMPOSE_CONVERT_WINDOWS_PATHS=1 abhishekf5/maven-abhishek-docker-agent:v1
+      docker run -v //var/run/docker.sock:/var/run/docker.sock -e DOCKER_HOST=tcp://localhost:2375 maven-abhishek-docker-agent:v1
       //args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     }
   }
